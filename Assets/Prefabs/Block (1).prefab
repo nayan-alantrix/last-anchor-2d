@@ -332,8 +332,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 718d7326a67b044948bd71ea01051f16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlockLevelGenerator
-  patternPool:
-  - {fileID: 11400000, guid: 4fe37b9b64c6b479a9b4f99b7a460f33, type: 2}
+  d1DiamondPrefab: {fileID: 822293082267576331, guid: b0e8bd45a6152490a8f10793358763b9, type: 3}
+  d3DiamondPrefab: {fileID: 202933553700185340, guid: da317921d84bf4708a3ef3f8d1d73b27, type: 3}
+  normalPlatformPrefab: {fileID: 3573399309464478247, guid: 628d8d55b5b8942a5b785670c626fde5, type: 3}
+  tPlatformPrefab: {fileID: 7021787526325534750, guid: c3a32bb6079894722a574ecb6b8736fd, type: 3}
+  normalPlatformCount: 3
+  minDiamonds: 2
+  maxDiamonds: 4
+  blockHalfWidth: 2.5
+  blockHalfHeight: 4.5
+  horizontalPadding: 0.6
+  verticalPadding: 1.2
+  minSpawnDistance: 1
+  maxPlacementAttempts: 30
 --- !u!1 &2249050527535845763
 GameObject:
   m_ObjectHideFlags: 0

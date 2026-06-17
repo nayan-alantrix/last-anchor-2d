@@ -5,7 +5,7 @@ using DG.Tweening;
 public class BlockController : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private BlockLevelGenerator levelGenerator;
+    //[SerializeField] private BlockLevelGenerator levelGenerator;
     [SerializeField] public GameObject lockedObject;
     [SerializeField] public GameObject blockedObject;
     [SerializeField] private Transform playerSpawnPoint;
@@ -37,8 +37,11 @@ public class BlockController : MonoBehaviour
     public void Initialize(BlockSpawner blockSpawner)
     {
         spawner = blockSpawner;
+        BlockLevelGenerator levelGenerator = GetComponent<BlockLevelGenerator>();
         if (levelGenerator != null)
+        {
             levelGenerator.Initialize(blockSpawner);
+        }
     }
 
     public void SetLocked()
