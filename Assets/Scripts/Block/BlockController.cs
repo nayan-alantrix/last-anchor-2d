@@ -70,6 +70,14 @@ public class BlockController : MonoBehaviour
         lockedObject.SetActive(true);
         lockedSprite.color = Color.green;
         blockedObject.SetActive(false);
+
+
+        BlockLevelGenerator levelGenerator = GetComponent<BlockLevelGenerator>();
+        if (levelGenerator != null)
+        {
+            levelGenerator.GenerateLevel();
+        }
+        
     }
 
     public void OnGateTouched()
