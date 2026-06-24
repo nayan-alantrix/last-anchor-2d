@@ -10,7 +10,7 @@ public class LevelController : MonoBehaviour
     public void Initialize(GameFlowController gameFlowController)
     {
         _gameFlowController = gameFlowController;
-        _blockSpawner.Initialize(this);
+        _blockSpawner.Initialize(this, _spikeController);
         _playerController.Initialize(this);
     }
 
@@ -47,5 +47,10 @@ public class LevelController : MonoBehaviour
     public void PlayerForcedGrounded(Transform spawnPoint, float moveTime)
     {
         _playerController.ForceGrounded(spawnPoint, moveTime);
+    }
+
+    public void SpikeTimer(float time)
+    {
+        _gameFlowController.UpdateTime(time);
     }
 }

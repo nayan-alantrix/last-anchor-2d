@@ -9,6 +9,7 @@ public class SpikeController : MonoBehaviour
 
     private BlockSpawner spawner;
     private Tweener moveTween;
+    private Tween timerTween;
     private bool isActive = false;
 
     public void Initialize(BlockSpawner blockSpawner)
@@ -28,12 +29,15 @@ public class SpikeController : MonoBehaviour
     {
         isActive = false;
         moveTween?.Pause();
+        timerTween?.Pause();
         DOTween.Kill(gameObject);
     }
 
     public void OnGameResume()
     {
         isActive = true;
+        moveTween?.Play();
+        timerTween?.Play();
         ScheduleNextMove();
     }
 
@@ -53,13 +57,32 @@ public class SpikeController : MonoBehaviour
 
     private void ScheduleNextMove()
     {
-        DOTween.Kill(gameObject);  // clear any existing tween
+        DOTween.Kill(gameObject);
+
+        float remainingTime = intervalTime;
+
+        // Update UI timer
+        timerTween = DOTween.To(
+            () => remainingTime,
+            x =>
+            {
+                remainingTime = x;
+                spawner.levelController.SpikeTimer(remainingTime);
+            },
+            0f,
+            intervalTime
+        )
+        .SetEase(Ease.Linear)
+        .SetId(gameObject);
 
         DOVirtual.DelayedCall(intervalTime, () =>
         {
             if (!isActive) return;
+
+            spawner.levelController.SpikeTimer(0f);
             MoveToNextBlock();
-        }).SetId(gameObject);
+        })
+        .SetId(gameObject);
     }
 
     private void MoveToNextBlock()

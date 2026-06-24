@@ -38,4 +38,9 @@ public class GameFlowController : MonoBehaviour
         _uiController.OnMainMenuClicked();
         _levelController.OnMainMenuClicked();
     }
+
+    public void UpdateTime(float time)
+    {
+        _uiController.UpdateSpikeTimer(time);
+    }
 }

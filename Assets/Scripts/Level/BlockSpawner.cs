@@ -5,7 +5,7 @@ using DG.Tweening;
 public class BlockSpawner : MonoBehaviour
 {
     [Header("Spike")]
-    [SerializeField] private SpikeController spike;
+    private SpikeController spike;
     [Header("References")]
     public BlockController blockPrefab;
     public Transform cameraTransform;
@@ -25,9 +25,10 @@ public class BlockSpawner : MonoBehaviour
 
     public LevelController levelController { get; private set; }
 
-    public void Initialize(LevelController controller)
+    public void Initialize(LevelController controller, SpikeController spike)
     {
         levelController = controller;
+        this.spike = spike;
         spike.Initialize(this);
     }
 

@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "last-anchor-2d.slnx"
+    "dotnet.defaultSolution": "Last Anchor 2D.slnx"
 }

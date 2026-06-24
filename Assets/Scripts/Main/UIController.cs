@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIController : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class UIController : MonoBehaviour
 
     [Header("Gameplay UI")]
     [SerializeField] private Button _pauseButton;
+    [SerializeField] private TextMeshProUGUI _spikeTimerText;
 
     [Header("Pause menu")]
     [SerializeField] private Button _resumeButton;
@@ -70,6 +72,11 @@ public class UIController : MonoBehaviour
     public void OnMainMenuClicked()
     {
         ActivateUI(GameState.MainMenu);
+    }
+
+    public void UpdateSpikeTimer(float time)
+    {
+        _spikeTimerText.text = time.ToString("F2");
     }
 
     private void ActivateUI(GameState state)

@@ -126,7 +126,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.013434112, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0.089999996, y: 0.089999996, z: 0.089999996, w: 0.089999996}
     pivot: {x: 0.5, y: 0.5}
@@ -136,7 +136,7 @@ BoxCollider2D:
     drawMode: 1
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.55, y: 10}
+  m_Size: {x: 0.5231317, y: 10}
   m_EdgeRadius: 0
 --- !u!1 &701989051429604777
 GameObject:
@@ -314,7 +314,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 863d92f89d9324ac0b98b6200d1b67b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Block
-  levelGenerator: {fileID: 1062124783659870977}
   lockedObject: {fileID: 1921696483741377115}
   blockedObject: {fileID: 2077179675152239315}
   playerSpawnPoint: {fileID: 1485266148816245339}
@@ -343,7 +342,11 @@ MonoBehaviour:
   blockHalfHeight: 4.5
   horizontalPadding: 0.6
   verticalPadding: 1.2
-  minSpawnDistance: 1
+  maxJumpHeight: 4
+  maxJumpWidth: 3.5
+  minVerticalStep: 0.8
+  minHorizontalDist: 0.5
+  lockLocalY: 4
   maxPlacementAttempts: 30
 --- !u!1 &2249050527535845763
 GameObject:
@@ -481,7 +484,7 @@ BoxCollider2D:
     drawMode: 1
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2, y: 0.5}
+  m_Size: {x: 2, y: 0.52}
   m_EdgeRadius: 0
 --- !u!1 &5073860381602886942
 GameObject:
@@ -650,7 +653,7 @@ BoxCollider2D:
     drawMode: 1
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2, y: 0.5}
+  m_Size: {x: 2, y: 0.52}
   m_EdgeRadius: 0
 --- !u!1001 &3830888706513823366
 PrefabInstance:
@@ -674,11 +677,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5237304309439588497, guid: d157f93adeb0049e198bc57cf8a660c6, type: 3}
       propertyPath: m_Size.x
-      value: 2.5
+      value: 2.517499
       objectReference: {fileID: 0}
     - target: {fileID: 5237304309439588497, guid: d157f93adeb0049e198bc57cf8a660c6, type: 3}
       propertyPath: m_Size.y
-      value: 0.55
+      value: 0.52
       objectReference: {fileID: 0}
     - target: {fileID: 5237304309439588497, guid: d157f93adeb0049e198bc57cf8a660c6, type: 3}
       propertyPath: m_Offset.x
@@ -809,7 +812,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8984464374076256685, guid: 1754f1c2bb76243579faeddbf4c040ce, type: 3}
       propertyPath: m_Size.x
-      value: 0.55
+      value: 0.5319246
       objectReference: {fileID: 0}
     - target: {fileID: 8984464374076256685, guid: 1754f1c2bb76243579faeddbf4c040ce, type: 3}
       propertyPath: m_Size.y
@@ -818,6 +821,10 @@ PrefabInstance:
     - target: {fileID: 8984464374076256685, guid: 1754f1c2bb76243579faeddbf4c040ce, type: 3}
       propertyPath: m_Material
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8984464374076256685, guid: 1754f1c2bb76243579faeddbf4c040ce, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.0090376735
       objectReference: {fileID: 0}
     - target: {fileID: 8984464374076256685, guid: 1754f1c2bb76243579faeddbf4c040ce, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
