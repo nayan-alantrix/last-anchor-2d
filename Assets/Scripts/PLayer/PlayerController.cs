@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     [Header("Components")]
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private ArrowIndicator arrowIndicator; 
+    [SerializeField] private ParticleSystem bounceEffect;
 
     [Header("Mobile Settings")]
     [SerializeField] private float launchForce = 8f;
@@ -148,6 +149,16 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
             rb.linearVelocity = Vector2.zero;
             rb.angularVelocity = 0f;
+            bounceEffect.Play();
+        }
+
+        if (collision.gameObject.CompareTag("Spike"))
+        {// change particle system start color to red and play it
+            var main = bounceEffect.main;
+            main.startColor = Color.red;
+            bounceEffect.Play();
+            Debug.Log("Player hit spike");
+            levelController.SetGameOver();
         }
     }
 
@@ -160,6 +171,8 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Platform"))
+        {
             isGrounded = false;
+        }
     }
 }

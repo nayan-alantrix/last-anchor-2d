@@ -4,12 +4,13 @@ using DG.Tweening;
 public class SpikeController : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] private float moveSpeed = 0.5f;  // time to move to next block
-    [SerializeField] private float intervalTime = 3f; // time before spike moves to next block
+    [SerializeField] private float moveSpeed = 0.5f;
+    [SerializeField] private float intervalTime = 3f;
 
     private BlockSpawner spawner;
     private Tweener moveTween;
     private Tween timerTween;
+    private Tween delayTween;
     private bool isActive = false;
 
     public void Initialize(BlockSpawner blockSpawner)
@@ -21,38 +22,46 @@ public class SpikeController : MonoBehaviour
     {
         isActive = true;
         transform.position = spawnPoint.position;
-        gameObject.SetActive(true);
         ScheduleNextMove();
     }
 
     public void OnGamePause()
     {
         isActive = false;
-        moveTween?.Pause();
+        // Pause all tweens by id — don't kill them
         timerTween?.Pause();
-        DOTween.Kill(gameObject);
+        delayTween?.Pause();
+        moveTween?.Pause();
     }
 
     public void OnGameResume()
     {
         isActive = true;
-        moveTween?.Play();
+        // Resume exactly where they left off
         timerTween?.Play();
-        ScheduleNextMove();
+        delayTween?.Play();
+        moveTween?.Play();
     }
 
     public void OnGameOver()
     {
         isActive = false;
         DOTween.Kill(gameObject);
-        gameObject.SetActive(false);
     }
 
     public void OnMainMenu()
     {
         isActive = false;
         DOTween.Kill(gameObject);
-        gameObject.SetActive(false);
+    }
+
+    // Called when player moves to next block — reset timer
+    public void OnPlayerMovedToNextBlock(Transform nextSpawnPoint)
+    {
+        if (!isActive) return;
+        DOTween.Kill(gameObject);
+        transform.position = nextSpawnPoint.position;
+        ScheduleNextMove();
     }
 
     private void ScheduleNextMove()
@@ -61,7 +70,6 @@ public class SpikeController : MonoBehaviour
 
         float remainingTime = intervalTime;
 
-        // Update UI timer
         timerTween = DOTween.To(
             () => remainingTime,
             x =>
@@ -75,10 +83,9 @@ public class SpikeController : MonoBehaviour
         .SetEase(Ease.Linear)
         .SetId(gameObject);
 
-        DOVirtual.DelayedCall(intervalTime, () =>
+        delayTween = DOVirtual.DelayedCall(intervalTime, () =>
         {
             if (!isActive) return;
-
             spawner.levelController.SpikeTimer(0f);
             MoveToNextBlock();
         })
@@ -87,12 +94,13 @@ public class SpikeController : MonoBehaviour
 
     private void MoveToNextBlock()
     {
+        if (spawner == null) return;
+
         Transform nextSpawn = spawner.GetNextSpikeSpawnPoint();
 
         if (nextSpawn == null)
         {
-            // No next block yet, retry after a short delay
-            DOVirtual.DelayedCall(0.5f, () =>
+            delayTween = DOVirtual.DelayedCall(0.5f, () =>
             {
                 if (isActive) MoveToNextBlock();
             }).SetId(gameObject);

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class LevelController : MonoBehaviour
@@ -26,22 +27,34 @@ public class LevelController : MonoBehaviour
     {
         _blockSpawner.OnGamePause();
         _playerController.OnGamePaused();
+        _spikeController.OnGamePause();
     }
     public void OnGameResume()
     {
-        _playerController.OnGameResumed();
+        StartCoroutine(ActivatePlayerAfterDelay(0.3f));
+        _blockSpawner.OnGameResume();
+        _spikeController.OnGameResume();
     }
 
+    private IEnumerator ActivatePlayerAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        _playerController.OnGameResumed();
+    }
     public void OnGameOver()
     {
         _blockSpawner.OnGameOver();
         _playerController.OnGameOver();
+        _spikeController.OnGameOver();
     }
 
+    public void SetGameOver()=> _gameFlowController.OnGameOver();
+    
     public void OnMainMenuClicked()
     {
         _blockSpawner.OnMainMenuClicked();
         _playerController.OnMainMenu();
+        _spikeController.OnMainMenu();
     }
 
     public void PlayerForcedGrounded(Transform spawnPoint, float moveTime)
