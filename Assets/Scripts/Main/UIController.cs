@@ -1,9 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class UIController : MonoBehaviour
 {
+    [Header("Configs ")]
+    [SerializeField] private float _gameOverDelay = 0.7f;
     [Header("UI panels")]
     [SerializeField] private GameObject _mainMenu;
     [SerializeField] private GameObject _gamePlayUI;
@@ -25,6 +28,7 @@ public class UIController : MonoBehaviour
 
     [Header("Game over menu")]
     [SerializeField] private Button _retryButton;
+    [SerializeField] private Button _mainMenuButtonGameOver;
 
     //safafv
 
@@ -50,6 +54,7 @@ public class UIController : MonoBehaviour
         _restartButton.onClick.AddListener(() => _gameFlowController.OnGameStart());
         _mainMenuButton.onClick.AddListener(() => _gameFlowController.OnMainMenuClicked());
         _retryButton.onClick.AddListener(() => _gameFlowController.OnGameStart());
+        _mainMenuButtonGameOver.onClick.AddListener(() => _gameFlowController.OnMainMenuClicked());
     }
     public void OnGameStart()
     {
@@ -66,6 +71,12 @@ public class UIController : MonoBehaviour
 
     public void OnGameOver()
     {
+        StartCoroutine(DelayAction(_gameOverDelay));
+    }
+
+    private IEnumerator DelayAction(float delay)
+    {
+        yield return new WaitForSeconds(delay);
         ActivateUI(GameState.GameOver);
     }
 

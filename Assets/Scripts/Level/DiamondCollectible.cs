@@ -7,10 +7,8 @@ public class DiamondCollectible : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Diamond collected!");
         if (collected) return;
         if (!other.CompareTag("Player")) return;
-
         collected = true;
         onCollected?.Invoke();
         gameObject.SetActive(false);

@@ -43,9 +43,6 @@ public class BlockLevelGenerator : MonoBehaviour
     public void Initialize(BlockSpawner blockSpawner)
     {
         spawner = blockSpawner;
-        
-        
-        
     }
 
     void Start()

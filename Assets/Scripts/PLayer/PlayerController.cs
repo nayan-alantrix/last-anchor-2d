@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxDragDistance = 2.5f;
     [SerializeField] private float minDragThreshold = 0.2f;
 
+    [Header("References")]
+    [SerializeField] private GameObject playerView;
+
     private Camera mainCam;
     private Vector2 touchStartWorldPos;
     private bool isDragging = false;
@@ -31,6 +34,9 @@ public class PlayerController : MonoBehaviour
         isGrounded = false;
         rb.simulated = true;
         isActive = true;
+        playerView.SetActive(true);
+        var main = bounceEffect.main;
+        main.startColor = Color.blue;
     }
 
     public void OnGamePaused()
@@ -47,12 +53,17 @@ public class PlayerController : MonoBehaviour
     {
         isActive = false;
         rb.simulated = false;
+        playerView.SetActive(false);
+        var main = bounceEffect.main;
+        main.startColor = Color.red;
+        bounceEffect.Play();
     }
 
     public void OnMainMenu()
     {
         isActive = false;
         rb.simulated = false;
+        playerView.SetActive(false);
     }
 
     void Awake()
@@ -153,10 +164,7 @@ public class PlayerController : MonoBehaviour
         }
 
         if (collision.gameObject.CompareTag("Spike"))
-        {// change particle system start color to red and play it
-            var main = bounceEffect.main;
-            main.startColor = Color.red;
-            bounceEffect.Play();
+        {
             Debug.Log("Player hit spike");
             levelController.SetGameOver();
         }
