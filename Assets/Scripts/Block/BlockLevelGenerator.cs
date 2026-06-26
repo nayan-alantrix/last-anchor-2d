@@ -50,7 +50,6 @@ public class BlockLevelGenerator : MonoBehaviour
         if (spawner == null)
         {
             spawner = FindFirstObjectByType<BlockSpawner>();
-            Debug.LogWarning("[BlockLevelGenerator] spawner was null in Start, found via FindFirstObjectByType");
         }
     }
 
@@ -250,7 +249,7 @@ public class BlockLevelGenerator : MonoBehaviour
             Debug.LogWarning("[BlockLevelGenerator] No next block found to open gate.");
     }
 
-    public void ClearLevel()
+    private void ClearLevel()
     {
         foreach (GameObject obj in spawnedItems)
         {

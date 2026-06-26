@@ -4,26 +4,25 @@ using DG.Tweening;
 
 public class BlockSpawner : MonoBehaviour
 {
-    [Header("Spike")]
-    private SpikeController spike;
     [Header("References")]
-    public BlockController blockPrefab;
-    public Transform cameraTransform;
+    [SerializeField] private BlockController blockPrefab;
+    [SerializeField] private Transform cameraTransform;
 
     [Header("Settings")]
-    public float blockHeight = 10f;
-    public float despawnDistance = 11f;
-    public int initialBlockCount = 4;
+    [SerializeField] private float blockHeight = 10f;
+    [SerializeField] private float despawnDistance = 11f;
+    [SerializeField] private int initialBlockCount = 4;
 
     [Header("Camera Move Settings")]
-    public float cameraMoveSpeed = 1f;
-    public Ease cameraEase = Ease.InOutSine;
-
+    [SerializeField]private float cameraMoveSpeed = 1f;
+    [SerializeField]private Ease cameraEase = Ease.InOutSine;
     private List<GameObject> blocks = new List<GameObject>();
     private int currentBlockIndex = 0;
     private bool isMoving = false;
+    private int spikeBlockIndex = 0;
 
     public LevelController levelController { get; private set; }
+    private SpikeController spike;
 
     public void Initialize(LevelController controller, SpikeController spike)
     {
@@ -34,12 +33,12 @@ public class BlockSpawner : MonoBehaviour
 
     void Start()
     {
-        if (cameraTransform == null)
-            cameraTransform = Camera.main.transform;
+        if (cameraTransform == null) cameraTransform = Camera.main.transform;
     }
 
     public BlockData OnGameStart()
-    {
+    {   
+        spikeBlockIndex = 0;
         cameraTransform.position = new Vector3(transform.position.x, 0f, cameraTransform.position.z);
         ClearAllBlocks();
         currentBlockIndex = 0;
@@ -54,12 +53,8 @@ public class BlockSpawner : MonoBehaviour
         };
     }
 
-    public void OnGamePause()
-    {   
-    }
-    public void OnGameResume()
-    {
-    }
+    public void OnGamePause(){}
+    public void OnGameResume(){}
 
     public void OnGameOver()
     {
@@ -120,6 +115,9 @@ public class BlockSpawner : MonoBehaviour
         if (nextGenerator != null)
             nextGenerator.GenerateLevel();
 
+        // Reset spike to current block and restart timer
+        spike?.OnPlayerMovedToNextBlock();
+
         float targetY = blocks[currentBlockIndex].transform.position.y;
         Vector3 targetPos = new Vector3(cameraTransform.position.x, targetY, cameraTransform.position.z);
 
@@ -133,14 +131,27 @@ public class BlockSpawner : MonoBehaviour
                 CheckAndRecycleBlocks();
             });
     }
+
+    // Add this — returns current block's spike spawn point
+    public Transform GetCurrentSpikeSpawnPoint()
+    {
+        if (currentBlockIndex >= blocks.Count) return null;
+        BlockController current = blocks[currentBlockIndex].GetComponent<BlockController>();
+        return current?.spikeSpawnPointTransform;
+    }
     public Transform GetNextSpikeSpawnPoint()
     {
-        int nextIndex = currentBlockIndex + 1;
-        if (nextIndex >= blocks.Count) return null;
-
-        BlockController nextBlock = blocks[nextIndex].GetComponent<BlockController>();
+        spikeBlockIndex++;  // spike advances its own index
+        if (spikeBlockIndex >= blocks.Count)
+        {
+            spikeBlockIndex = blocks.Count - 1;
+            return null;
+        }
+        BlockController nextBlock = blocks[spikeBlockIndex].GetComponent<BlockController>();
         return nextBlock?.spikeSpawnPointTransform;
     }
+
+
 
     void CheckAndRecycleBlocks()
     {

@@ -3,10 +3,9 @@ using UnityEngine;
 public class ArrowIndicator : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer spriteRenderer;
-
     private Vector3 originalScale;
 
-    void Awake()
+    private void Awake()
     {
         originalScale = transform.localScale;
         Hide();

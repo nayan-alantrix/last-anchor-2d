@@ -5,6 +5,7 @@ public class SpikeController : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] private float moveSpeed = 0.5f;
+    [SerializeField] private float catchUpSpeed = 0.1f;
     [SerializeField] private float intervalTime = 3f;
 
     private BlockSpawner spawner;
@@ -12,6 +13,7 @@ public class SpikeController : MonoBehaviour
     private Tween timerTween;
     private Tween delayTween;
     private bool isActive = false;
+    private bool isMoving = false;
 
     public void Initialize(BlockSpawner blockSpawner)
     {
@@ -21,14 +23,14 @@ public class SpikeController : MonoBehaviour
     public void OnGameStart(Transform spawnPoint)
     {
         isActive = true;
+        isMoving = false;
         transform.position = spawnPoint.position;
-        ScheduleNextMove();
+        StartTimer();
     }
 
     public void OnGamePause()
     {
         isActive = false;
-        // Pause all tweens by id — don't kill them
         timerTween?.Pause();
         delayTween?.Pause();
         moveTween?.Pause();
@@ -37,7 +39,6 @@ public class SpikeController : MonoBehaviour
     public void OnGameResume()
     {
         isActive = true;
-        // Resume exactly where they left off
         timerTween?.Play();
         delayTween?.Play();
         moveTween?.Play();
@@ -46,28 +47,28 @@ public class SpikeController : MonoBehaviour
     public void OnGameOver()
     {
         isActive = false;
-        DOTween.Kill(gameObject);
+        KillAll();
     }
 
     public void OnMainMenu()
     {
         isActive = false;
-        DOTween.Kill(gameObject);
+        KillAll();
     }
 
-    // Called when player moves to next block — reset timer
-    public void OnPlayerMovedToNextBlock(Transform nextSpawnPoint)
+    // Called when player moves to next block
+    public void OnPlayerMovedToNextBlock()
     {
         if (!isActive) return;
-        DOTween.Kill(gameObject);
-        transform.position = nextSpawnPoint.position;
-        ScheduleNextMove();
+        KillAll();
+        isMoving = false;
+        MoveToTargetPoint(spawner.GetCurrentSpikeSpawnPoint(), catchUpSpeed);
     }
 
-    private void ScheduleNextMove()
+    private void StartTimer()
     {
-        DOTween.Kill(gameObject);
-
+        KillAll();
+        isMoving = false;
         float remainingTime = intervalTime;
 
         timerTween = DOTween.To(
@@ -79,40 +80,51 @@ public class SpikeController : MonoBehaviour
             },
             0f,
             intervalTime
-        )
-        .SetEase(Ease.Linear)
-        .SetId(gameObject);
+        ).SetEase(Ease.Linear);
 
         delayTween = DOVirtual.DelayedCall(intervalTime, () =>
         {
             if (!isActive) return;
             spawner.levelController.SpikeTimer(0f);
-            MoveToNextBlock();
-        })
-        .SetId(gameObject);
+            MoveToNextSpikePoint();
+        });
     }
 
-    private void MoveToNextBlock()
+    private void MoveToNextSpikePoint()
     {
         if (spawner == null) return;
-
         Transform nextSpawn = spawner.GetNextSpikeSpawnPoint();
+        MoveToTargetPoint(nextSpawn, moveSpeed);
+    }
 
-        if (nextSpawn == null)
+    private void MoveToTargetPoint(Transform target, float speed)
+    {
+        // If target not ready — start timer anyway, no stuck state
+        if (target == null)
         {
-            delayTween = DOVirtual.DelayedCall(0.5f, () =>
-            {
-                if (isActive) MoveToNextBlock();
-            }).SetId(gameObject);
+            StartTimer();
             return;
         }
 
-        moveTween = transform.DOMove(nextSpawn.position, moveSpeed)
+        isMoving = true;
+
+        moveTween = transform.DOMove(target.position, speed)
             .SetEase(Ease.InOutSine)
-            .SetId(gameObject)
             .OnComplete(() =>
             {
-                if (isActive) ScheduleNextMove();
+                if (!isActive) return;
+                isMoving = false;
+                StartTimer();
             });
+    }
+
+    private void KillAll()
+    {
+        timerTween?.Kill();
+        timerTween = null;
+        delayTween?.Kill();
+        delayTween = null;
+        moveTween?.Kill();
+        moveTween = null;
     }
 }

@@ -38,13 +38,8 @@ public class UIController : MonoBehaviour
     {
         _gameFlowController = gameFlowController;
         RegisterButtonCallbacks();
-    }
-
-    private void Awake()
-    {
         ActivateUI(GameState.MainMenu);
     }
-
     private void RegisterButtonCallbacks()
     {
         _playButton.onClick.AddListener(() => _gameFlowController.OnGameStart());

@@ -2407,12 +2407,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1208826370142890481, guid: afba20dc77c844dccbaa32fee313671f, type: 3}
+      propertyPath: catchUpSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1208826370142890481, guid: afba20dc77c844dccbaa32fee313671f, type: 3}
       propertyPath: intervalTime
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2650080002402311882, guid: afba20dc77c844dccbaa32fee313671f, type: 3}
       propertyPath: m_Name
       value: Spikes
+      objectReference: {fileID: 0}
+    - target: {fileID: 6602075466436896172, guid: afba20dc77c844dccbaa32fee313671f, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
