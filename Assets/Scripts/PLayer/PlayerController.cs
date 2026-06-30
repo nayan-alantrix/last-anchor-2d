@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private GameObject playerView;
+    [SerializeField] private Animator playerAnimator;
 
     private Camera mainCam;
     private Vector2 touchStartWorldPos;
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour
         rb.simulated = true;
         isActive = true;
         playerView.SetActive(true);
+        playerAnimator.SetBool("Death", false);
         var main = bounceEffect.main;
         main.startColor = Color.blue;
     }
@@ -53,10 +55,10 @@ public class PlayerController : MonoBehaviour
     {
         isActive = false;
         rb.simulated = false;
-        playerView.SetActive(false);
-        var main = bounceEffect.main;
-        main.startColor = Color.red;
-        bounceEffect.Play();
+        //playerView.SetActive(false);
+        // var main = bounceEffect.main;
+        // main.startColor = Color.red;
+        // bounceEffect.Play();
     }
 
     public void OnMainMenu()
@@ -165,7 +167,7 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Spike"))
         {
-            Debug.Log("Player hit spike");
+            playerAnimator.SetBool("Death", true);
             levelController.SetGameOver();
         }
     }
