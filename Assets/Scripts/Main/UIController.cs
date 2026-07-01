@@ -16,10 +16,12 @@ public class UIController : MonoBehaviour
     [Header("Main menu ")]
     [SerializeField] private Button _playButton;
     [SerializeField] private Button _quitButton;
+    [SerializeField] private TextMeshProUGUI _highScoreText_mainMenu;
 
     [Header("Gameplay UI")]
     [SerializeField] private Button _pauseButton;
     [SerializeField] private TextMeshProUGUI _spikeTimerText;
+    [SerializeField] private TextMeshProUGUI _currentScoreText_gameplay;
 
     [Header("Pause menu")]
     [SerializeField] private Button _resumeButton;
@@ -29,6 +31,8 @@ public class UIController : MonoBehaviour
     [Header("Game over menu")]
     [SerializeField] private Button _retryButton;
     [SerializeField] private Button _mainMenuButtonGameOver;
+    [SerializeField] private TextMeshProUGUI _highScoreText_gameOver;
+    [SerializeField] private TextMeshProUGUI _currentScoreText_gameOver;
 
     private GameFlowController _gameFlowController;
 
@@ -36,18 +40,18 @@ public class UIController : MonoBehaviour
     {
         _gameFlowController = gameFlowController;
         RegisterButtonCallbacks();
-        ActivateUI(GameState.MainMenu);
+        OnMainMenuClicked(); // Activate main menu on start
     }
     private void RegisterButtonCallbacks()
     {
-        _playButton.onClick.AddListener(() => _gameFlowController.OnGameStart());
-        _quitButton.onClick.AddListener(() => Application.Quit());
-        _pauseButton.onClick.AddListener(() => _gameFlowController.OnGamePause());
-        _resumeButton.onClick.AddListener(() => _gameFlowController.OnGameResume());
-        _restartButton.onClick.AddListener(() => _gameFlowController.OnGameStart());
-        _mainMenuButton.onClick.AddListener(() => _gameFlowController.OnMainMenuClicked());
-        _retryButton.onClick.AddListener(() => _gameFlowController.OnGameStart());
-        _mainMenuButtonGameOver.onClick.AddListener(() => _gameFlowController.OnMainMenuClicked());
+        _playButton.onClick.AddListener(() => {_gameFlowController.OnGameStart(); ButtonClickSound();});
+        _quitButton.onClick.AddListener(() => {Application.Quit(); ButtonClickSound();});
+        _pauseButton.onClick.AddListener(() => {_gameFlowController.OnGamePause(); ButtonClickSound();});
+        _resumeButton.onClick.AddListener(() => {_gameFlowController.OnGameResume(); ButtonClickSound();});
+        _restartButton.onClick.AddListener(() => {_gameFlowController.OnGameStart(); ButtonClickSound();});
+        _mainMenuButton.onClick.AddListener(() => {_gameFlowController.OnMainMenuClicked(); ButtonClickSound();});
+        _retryButton.onClick.AddListener(() => {_gameFlowController.OnGameStart(); ButtonClickSound();});
+        _mainMenuButtonGameOver.onClick.AddListener(() => {_gameFlowController.OnMainMenuClicked(); ButtonClickSound();});
     }
     public void OnGameStart()
     {
@@ -62,8 +66,10 @@ public class UIController : MonoBehaviour
         ActivateUI(GameState.Playing);
     }
 
-    public void OnGameOver()
+    public void OnGameOver(int currentScore)
     {
+        _highScoreText_gameOver.text = $"High Score : {PlayerPrefs.GetInt(GameFlowController.highScoreKey, 0)}";
+        _currentScoreText_gameOver.text = $"Score : {currentScore}";
         StartCoroutine(DelayAction(_gameOverDelay));
     }
 
@@ -75,13 +81,21 @@ public class UIController : MonoBehaviour
 
     public void OnMainMenuClicked()
     {
+        _highScoreText_mainMenu.text = $"High Score : {PlayerPrefs.GetInt(GameFlowController.highScoreKey, 0)}";
         ActivateUI(GameState.MainMenu);
+    }
+
+    public void UpdateCurrentScore(int score)
+    {
+        _currentScoreText_gameplay.text = $"Score : {score}";
     }
 
     public void UpdateSpikeTimer(float time)
     {
         _spikeTimerText.text = time.ToString("F1");
     }
+
+    private void ButtonClickSound() => _gameFlowController.GetAudioController().PlayAudio(AudioType.ButtonClick);
 
     private void ActivateUI(GameState state)
     {

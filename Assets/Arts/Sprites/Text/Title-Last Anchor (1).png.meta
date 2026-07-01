@@ -1,0 +1,845 @@
+fileFormatVersion: 2
+guid: 54c88e1de385f44b5ab0f028cd4e1c79
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2971783933766614000
+    second: Title-Last Anchor (1)_0
+  - first:
+      213: 3595631105463553178
+    second: Title-Last Anchor (1)_1
+  - first:
+      213: 6085707079894053993
+    second: Title-Last Anchor (1)_2
+  - first:
+      213: 6055105022732790428
+    second: Title-Last Anchor (1)_3
+  - first:
+      213: 7736529502141740126
+    second: Title-Last Anchor (1)_4
+  - first:
+      213: -4422359210460333531
+    second: Title-Last Anchor (1)_5
+  - first:
+      213: 1982576018000508727
+    second: Title-Last Anchor (1)_6
+  - first:
+      213: -8540694968273612882
+    second: Title-Last Anchor (1)_7
+  - first:
+      213: 3904398037662183853
+    second: Title-Last Anchor (1)_8
+  - first:
+      213: 7475180727680314722
+    second: Title-Last Anchor (1)_9
+  - first:
+      213: -8869978224129220415
+    second: Title-Last Anchor (1)_10
+  - first:
+      213: 8482998847984673878
+    second: Title-Last Anchor (1)_11
+  - first:
+      213: -6011762475690037215
+    second: Title-Last Anchor (1)_12
+  - first:
+      213: -1362680490045291562
+    second: Title-Last Anchor (1)_13
+  - first:
+      213: 1490558665757271404
+    second: Title-Last Anchor (1)_14
+  - first:
+      213: 2625510915167218746
+    second: Title-Last Anchor (1)_15
+  - first:
+      213: 2704761483291519421
+    second: Title-Last Anchor (1)_16
+  - first:
+      213: -7272119581758310568
+    second: Title-Last Anchor (1)_17
+  - first:
+      213: -795809309073813740
+    second: Title-Last Anchor (1)_18
+  - first:
+      213: -786950227328783099
+    second: Title-Last Anchor (1)_19
+  - first:
+      213: -7823291105997178371
+    second: Title-Last Anchor (1)_20
+  - first:
+      213: 113285310115570236
+    second: Title-Last Anchor (1)_21
+  - first:
+      213: 3895205154918657575
+    second: Title-Last Anchor (1)_22
+  - first:
+      213: -3039916529687573035
+    second: Title-Last Anchor (1)_23
+  - first:
+      213: -5409686947791600447
+    second: Title-Last Anchor (1)_24
+  - first:
+      213: -1742747864004422060
+    second: Title-Last Anchor (1)_25
+  - first:
+      213: -8682804993958781565
+    second: Title-Last Anchor (1)_26
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Title-Last Anchor (1)_0
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 212
+        width: 518
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fb3f591eb5ed3920800000000000000
+      internalID: 2971783933766614000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Title-Last Anchor (1)_1
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 68
+        width: 795
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9c0080a07f36e130800000000000000
+      internalID: 3595631105463553178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Title-Last Anchor (1)_2
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 14
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9643a208856c47450800000000000000
+      internalID: 6085707079894053993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Title-Last Anchor (1)_3
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 41
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9aeba5dfed080450800000000000000
+      internalID: 6055105022732790428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Title-Last Anchor (1)_4
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 14
+        width: 15
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e54fc71a79cad5b60800000000000000
+      internalID: 7736529502141740126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Title-Last Anchor (1)_5
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 14
+        width: 30
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52ab55f8abf90a2c0800000000000000
+      internalID: -4422359210460333531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Title-Last Anchor (1)_6
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 14
+        width: 11
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 737f02d5266838b10800000000000000
+      internalID: 1982576018000508727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Title-Last Anchor (1)_7
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 14
+        width: 11
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eafc5194d2b597980800000000000000
+      internalID: -8540694968273612882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Title-Last Anchor (1)_8
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 14
+        width: 15
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da1369034553f2630800000000000000
+      internalID: 3904398037662183853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Title-Last Anchor (1)_9
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 14
+        width: 30
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26d2b31444d2db760800000000000000
+      internalID: 7475180727680314722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Title-Last Anchor (1)_10
+      rect:
+        serializedVersion: 2
+        x: 583
+        y: 14
+        width: 12
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c0e351ecc187e480800000000000000
+      internalID: -8869978224129220415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Title-Last Anchor (1)_11
+      rect:
+        serializedVersion: 2
+        x: 651
+        y: 14
+        width: 24
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 654ac24e18aa9b570800000000000000
+      internalID: 8482998847984673878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Title-Last Anchor (1)_12
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 14
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 120f87a41ede19ca0800000000000000
+      internalID: -6011762475690037215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Title-Last Anchor (1)_13
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 14
+        width: 29
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d3ce786059c61de0800000000000000
+      internalID: -1362680490045291562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Title-Last Anchor (1)_14
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 14
+        width: 7
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c65a75d85378fa410800000000000000
+      internalID: 1490558665757271404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Title-Last Anchor (1)_15
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 5
+        width: 25
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3ce37c4440bf6420800000000000000
+      internalID: 2625510915167218746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Title-Last Anchor (1)_16
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 14
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db9efb51d3e398520800000000000000
+      internalID: 2704761483291519421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Title-Last Anchor (1)_17
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 14
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 857322d05cd341b90800000000000000
+      internalID: -7272119581758310568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Title-Last Anchor (1)_18
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 10
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41fc4b756a7b4f4f0800000000000000
+      internalID: -795809309073813740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Title-Last Anchor (1)_19
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 14
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50da72c00f03415f0800000000000000
+      internalID: -786950227328783099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Title-Last Anchor (1)_20
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 14
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df9b09c40361e6390800000000000000
+      internalID: -7823291105997178371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Title-Last Anchor (1)_21
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 14
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3265bba368729100800000000000000
+      internalID: 113285310115570236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Title-Last Anchor (1)_22
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 9
+        width: 6
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72e6232637c8e0630800000000000000
+      internalID: 3895205154918657575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Title-Last Anchor (1)_23
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 14
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5dd422db50c00d5d0800000000000000
+      internalID: -3039916529687573035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Title-Last Anchor (1)_24
+      rect:
+        serializedVersion: 2
+        x: 596
+        y: 14
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c480daf16eece4b0800000000000000
+      internalID: -5409686947791600447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Title-Last Anchor (1)_25
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 0
+        width: 124
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45612f81d0480d7e0800000000000000
+      internalID: -1742747864004422060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Title-Last Anchor (1)_26
+      rect:
+        serializedVersion: 2
+        x: 677
+        y: 14
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38d59198cda708780800000000000000
+      internalID: -8682804993958781565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Title-Last Anchor (1)_0: 2971783933766614000
+      Title-Last Anchor (1)_1: 3595631105463553178
+      Title-Last Anchor (1)_10: -8869978224129220415
+      Title-Last Anchor (1)_11: 8482998847984673878
+      Title-Last Anchor (1)_12: -6011762475690037215
+      Title-Last Anchor (1)_13: -1362680490045291562
+      Title-Last Anchor (1)_14: 1490558665757271404
+      Title-Last Anchor (1)_15: 2625510915167218746
+      Title-Last Anchor (1)_16: 2704761483291519421
+      Title-Last Anchor (1)_17: -7272119581758310568
+      Title-Last Anchor (1)_18: -795809309073813740
+      Title-Last Anchor (1)_19: -786950227328783099
+      Title-Last Anchor (1)_2: 6085707079894053993
+      Title-Last Anchor (1)_20: -7823291105997178371
+      Title-Last Anchor (1)_21: 113285310115570236
+      Title-Last Anchor (1)_22: 3895205154918657575
+      Title-Last Anchor (1)_23: -3039916529687573035
+      Title-Last Anchor (1)_24: -5409686947791600447
+      Title-Last Anchor (1)_25: -1742747864004422060
+      Title-Last Anchor (1)_26: -8682804993958781565
+      Title-Last Anchor (1)_3: 6055105022732790428
+      Title-Last Anchor (1)_4: 7736529502141740126
+      Title-Last Anchor (1)_5: -4422359210460333531
+      Title-Last Anchor (1)_6: 1982576018000508727
+      Title-Last Anchor (1)_7: -8540694968273612882
+      Title-Last Anchor (1)_8: 3904398037662183853
+      Title-Last Anchor (1)_9: 7475180727680314722
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

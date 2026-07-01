@@ -2,8 +2,14 @@ using UnityEngine;
 
 public class GameFlowController : MonoBehaviour
 {
+    [Header("Services")]
     [SerializeField] private UIController _uiController;
     [SerializeField] private LevelController _levelController;
+    [SerializeField] private AudioController _audioController;
+    public AudioController GetAudioController() => _audioController;
+    
+    [Header("Game Config")]
+    public static string highScoreKey { get; private set; } = "HighScore";  
 
     private void Awake()
     {
@@ -12,6 +18,7 @@ public class GameFlowController : MonoBehaviour
     }
     public void OnGameStart()
     {
+        _audioController.PlayMusic(AudioType.BGM_1);
         _uiController.OnGameStart();
         _levelController.OnGameStart();
         Time.timeScale = 1f;
@@ -28,9 +35,9 @@ public class GameFlowController : MonoBehaviour
         _levelController.OnGameResume();
         Time.timeScale = 1f;
     }
-    public void OnGameOver()
+    public void OnGameOver(int score)
     {
-        _uiController.OnGameOver();
+        _uiController.OnGameOver(score);
         _levelController.OnGameOver();
     }
     public void OnMainMenuClicked()
@@ -39,6 +46,10 @@ public class GameFlowController : MonoBehaviour
         _levelController.OnMainMenuClicked();
     }
 
+    public void UpdateCurrentScore(int score)
+    {
+        _uiController.UpdateCurrentScore(score);
+    }
     public void UpdateTime(float time)
     {
         _uiController.UpdateSpikeTimer(time);

@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private GameObject playerView;
-    [SerializeField] private Animator playerAnimator;
+    [SerializeField] private Animator playerAnimator;    
 
     private Camera mainCam;
     private Vector2 touchStartWorldPos;
@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
     private LevelController levelController;
     private bool isActive = false;
 
+    private int score = 0;
+
     public void Initialize(LevelController controller)
     {
         levelController = controller;
@@ -32,7 +34,8 @@ public class PlayerController : MonoBehaviour
 
     public void OnGameStart(Transform spawnPoint)
     {   
-        Debug.Log("PlayerController: OnGameStart called");
+        score = 0;
+        levelController.UpdateCurrentScore(score);
         playerView.SetActive(false);
         transform.position = spawnPoint.position;
         isGrounded = false;
@@ -151,13 +154,14 @@ public class PlayerController : MonoBehaviour
     // Called by GateContactDetector when player enters next block
     public void ForceGrounded(Transform spawnPoint,float moveTime)
     {
+        score++;
+        levelController.UpdateCurrentScore(score);
         isGrounded = true;
         rb.linearVelocity = Vector2.zero;
         rb.angularVelocity = 0f;
         rb.simulated = false;
         //move form current loction to spawn point using DOTween
         transform.DOMove(spawnPoint.position, 0.5f).onComplete = () => rb.simulated = true;
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -173,7 +177,12 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Spike"))
         {
             playerAnimator.SetBool("Death", true);
-            levelController.SetGameOver();
+            int highScore = PlayerPrefs.GetInt(GameFlowController.highScoreKey, 0);
+            if (score > highScore)
+            {
+                PlayerPrefs.SetInt(GameFlowController.highScoreKey, score);
+            }
+            levelController.SetGameOver(score);
         }
     }
 

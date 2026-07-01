@@ -45,8 +45,6 @@ public class LevelController : MonoBehaviour
         _playerController.OnGameOver();
         _spikeController.OnGameOver();
     }
-
-    public void SetGameOver()=> _gameFlowController.OnGameOver();
     
     public void OnMainMenuClicked()
     {
@@ -54,14 +52,14 @@ public class LevelController : MonoBehaviour
         _playerController.OnMainMenu();
         _spikeController.OnMainMenu();
     }
+    public void SetGameOver(int score)=> _gameFlowController.OnGameOver(score);
 
-    public void PlayerForcedGrounded(Transform spawnPoint, float moveTime)
-    {
-        _playerController.ForceGrounded(spawnPoint, moveTime);
-    }
+    public void PlayerForcedGrounded(Transform spawnPoint, float moveTime) => _playerController.ForceGrounded(spawnPoint, moveTime);
 
-    public void SpikeTimer(float time)
-    {
-        _gameFlowController.UpdateTime(time);
-    }
+    public void SpikeTimer(float time) => _gameFlowController.UpdateTime(time);
+    
+    public void UpdateCurrentScore(int score) => _gameFlowController.UpdateCurrentScore(score);
+
+    public void PlayAudio(AudioType audioType) => _gameFlowController.GetAudioController().PlayAudio(audioType);
+    
 }
