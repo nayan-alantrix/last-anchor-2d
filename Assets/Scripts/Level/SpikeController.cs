@@ -3,18 +3,21 @@ using DG.Tweening;
 
 public class SpikeController : MonoBehaviour
 {
-    [Header("Settings")]
+    [Header("Movement")]
     [SerializeField] private float moveSpeed = 0.5f;
     [SerializeField] private float catchUpSpeed = 0.1f;
-    [SerializeField] private float intervalTime = 3f;
+
+    [Header("Timer Difficulty")]
+    [SerializeField] private float startInterval = 8f;    // timer at block 1
+    [SerializeField] private float minInterval = 2f;      // hardest timer ever
+    [SerializeField] private float difficultyRate = 0.3f; // how fast it gets harder per block
 
     private BlockSpawner spawner;
     private Tweener moveTween;
     private Tween timerTween;
     private Tween delayTween;
     private bool isActive = false;
-    [SerializeField] private bool isMoving = false;
-
+    private bool isMoving = false;
     private int transitionId = 0;
 
     public void Initialize(BlockSpawner blockSpawner)
@@ -59,7 +62,6 @@ public class SpikeController : MonoBehaviour
         KillAll();
     }
 
-    // Player moved to next block — spike catches up to player's current block
     public void OnPlayerMovedToNextBlock()
     {
         if (!isActive) return;
@@ -68,9 +70,16 @@ public class SpikeController : MonoBehaviour
         KillAll();
         isMoving = false;
 
-        // Move to player's current block (syncs spikeBlockIndex = currentBlockIndex)
         Transform playerBlockSpawn = spawner.GetCurrentPlayerSpikeSpawnPoint();
-        MoveToTargetPoint(playerBlockSpawn, catchUpSpeed, myTransition, isCatchUp: true);
+        MoveToTargetPoint(playerBlockSpawn, catchUpSpeed, myTransition);
+    }
+
+    // Timer shrinks every block — more competitive as game goes on
+    private float GetCurrentInterval()
+    {
+        int blockIndex = spawner.CurrentBlockIndex;
+        float interval = startInterval - (difficultyRate * blockIndex);
+        return Mathf.Max(interval, minInterval);
     }
 
     private void StartTimer()
@@ -79,6 +88,7 @@ public class SpikeController : MonoBehaviour
         KillAll();
         isMoving = false;
 
+        float intervalTime = GetCurrentInterval();
         float remainingTime = intervalTime;
 
         timerTween = DOTween.To(
@@ -100,13 +110,12 @@ public class SpikeController : MonoBehaviour
 
             spawner.levelController.SpikeTimer(0f);
 
-            // Timer expired — spike advances to NEXT block on its own
             Transform nextSpawn = spawner.GetNextSpikeSpawnPoint();
-            MoveToTargetPoint(nextSpawn, moveSpeed, myTransition, isCatchUp: false);
+            MoveToTargetPoint(nextSpawn, moveSpeed, myTransition);
         });
     }
 
-    private void MoveToTargetPoint(Transform target, float speed, int myTransition, bool isCatchUp)
+    private void MoveToTargetPoint(Transform target, float speed, int myTransition)
     {
         if (myTransition != transitionId) return;
 
@@ -126,7 +135,6 @@ public class SpikeController : MonoBehaviour
                 if (myTransition != transitionId) return;
 
                 isMoving = false;
-                // After any move — always start fresh timer
                 StartTimer();
             });
     }

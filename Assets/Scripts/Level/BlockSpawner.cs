@@ -20,6 +20,7 @@ public class BlockSpawner : MonoBehaviour
     private int currentBlockIndex = 0;
     private bool isMoving = false;
     private int spikeBlockIndex = 0;
+    public int CurrentBlockIndex => currentBlockIndex;
 
     public LevelController levelController { get; private set; }
     private SpikeController spike;
@@ -31,7 +32,7 @@ public class BlockSpawner : MonoBehaviour
         spike.Initialize(this);
     }
 
-    void Start()
+    private void Start()
     {
         if (cameraTransform == null) cameraTransform = Camera.main.transform;
     }
@@ -86,7 +87,7 @@ public class BlockSpawner : MonoBehaviour
         blocks.Clear();
     }
 
-    void Update()
+    private void Update()
     {
         CheckAndRecycleBlocks();
     }
@@ -109,11 +110,6 @@ public class BlockSpawner : MonoBehaviour
         BlockController nextController = blocks[currentBlockIndex].GetComponent<BlockController>();
         if (nextController != null)
             nextController.Unlock();
-
-        // Generate level in next block
-        BlockLevelGenerator nextGenerator = blocks[currentBlockIndex].GetComponent<BlockLevelGenerator>();
-        if (nextGenerator != null)
-            nextGenerator.GenerateLevel();
 
         // Reset spike to current block and restart timer
         spike?.OnPlayerMovedToNextBlock();
@@ -140,18 +136,18 @@ public class BlockSpawner : MonoBehaviour
         return current?.spikeSpawnPointTransform;
     }
     public Transform GetNextSpikeSpawnPoint()
-{
-    spikeBlockIndex++;
-    if (spikeBlockIndex >= blocks.Count)
     {
-        spikeBlockIndex = blocks.Count - 1;
-        return null;
+        spikeBlockIndex++;
+        if (spikeBlockIndex >= blocks.Count)
+        {
+            spikeBlockIndex = blocks.Count - 1;
+            return null;
+        }
+        BlockController block = blocks[spikeBlockIndex].GetComponent<BlockController>();
+        return block?.spikeSpawnPointTransform;
     }
-    BlockController block = blocks[spikeBlockIndex].GetComponent<BlockController>();
-    return block?.spikeSpawnPointTransform;
-}
 
-// Called when player moves — spike catches up to player's current block
+    // Called when player moves — spike catches up to player's current block
     public Transform GetCurrentPlayerSpikeSpawnPoint()
     {
         if (currentBlockIndex >= blocks.Count) return null;
@@ -185,7 +181,7 @@ public class BlockSpawner : MonoBehaviour
         }
     }
 
-    float GetHighestBlockY()
+    private float GetHighestBlockY()
     {
         float highest = float.MinValue;
         foreach (GameObject b in blocks)
@@ -197,7 +193,7 @@ public class BlockSpawner : MonoBehaviour
         return highest;
     }
 
-    void SpawnBlockAt(float yPosition, int spawnIndex)
+    private void SpawnBlockAt(float yPosition, int spawnIndex)
     {
         Vector3 pos = new Vector3(transform.position.x, yPosition, transform.position.z);
         BlockController newBlock = Instantiate<BlockController>(blockPrefab, pos, Quaternion.identity, transform);

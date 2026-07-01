@@ -30,8 +30,6 @@ public class UIController : MonoBehaviour
     [SerializeField] private Button _retryButton;
     [SerializeField] private Button _mainMenuButtonGameOver;
 
-    //safafv
-
     private GameFlowController _gameFlowController;
 
     public void Initialize(GameFlowController gameFlowController)
@@ -82,7 +80,7 @@ public class UIController : MonoBehaviour
 
     public void UpdateSpikeTimer(float time)
     {
-        _spikeTimerText.text = time.ToString("F2");
+        _spikeTimerText.text = time.ToString("F1");
     }
 
     private void ActivateUI(GameState state)
