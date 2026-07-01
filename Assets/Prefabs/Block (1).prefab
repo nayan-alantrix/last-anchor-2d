@@ -335,9 +335,13 @@ MonoBehaviour:
   d3DiamondPrefab: {fileID: 202933553700185340, guid: da317921d84bf4708a3ef3f8d1d73b27, type: 3}
   normalPlatformPrefab: {fileID: 3573399309464478247, guid: 628d8d55b5b8942a5b785670c626fde5, type: 3}
   tPlatformPrefab: {fileID: 7021787526325534750, guid: c3a32bb6079894722a574ecb6b8736fd, type: 3}
+  singleSpikePrefab: {fileID: 5583822021187333940, guid: 779006fe8cb4e4e3c88a731505adbac9, type: 3}
   normalPlatformCount: 3
   minDiamonds: 2
   maxDiamonds: 4
+  minSpikes: 0
+  maxSpikes: 2
+  spikeChancePerPlatform: 0.3
   blockHalfWidth: 2.5
   blockHalfHeight: 4.5
   horizontalPadding: 0.6
@@ -347,6 +351,7 @@ MonoBehaviour:
   minVerticalStep: 0.8
   minHorizontalDist: 0.5
   lockLocalY: 4
+  spikeHeightAbovePlatform: 0.4
   maxPlacementAttempts: 30
 --- !u!1 &2249050527535845763
 GameObject:

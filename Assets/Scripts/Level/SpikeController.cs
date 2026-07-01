@@ -13,9 +13,8 @@ public class SpikeController : MonoBehaviour
     private Tween timerTween;
     private Tween delayTween;
     private bool isActive = false;
-    private bool isMoving = false;
+    [SerializeField] private bool isMoving = false;
 
-    // Guards against re-entrant calls in the same frame
     private int transitionId = 0;
 
     public void Initialize(BlockSpawner blockSpawner)
@@ -27,6 +26,7 @@ public class SpikeController : MonoBehaviour
     {
         isActive = true;
         isMoving = false;
+        transitionId = 0;
         transform.position = spawnPoint.position;
         StartTimer();
     }
@@ -59,23 +59,23 @@ public class SpikeController : MonoBehaviour
         KillAll();
     }
 
-    // Called when player moves to next block (diamonds collected + gate touched)
+    // Player moved to next block — spike catches up to player's current block
     public void OnPlayerMovedToNextBlock()
     {
         if (!isActive) return;
 
-        int myTransition = ++transitionId; // invalidate any in-flight transition
-
+        int myTransition = ++transitionId;
         KillAll();
         isMoving = false;
 
-        MoveToTargetPoint(spawner.GetCurrentSpikeSpawnPoint(), catchUpSpeed, myTransition);
+        // Move to player's current block (syncs spikeBlockIndex = currentBlockIndex)
+        Transform playerBlockSpawn = spawner.GetCurrentPlayerSpikeSpawnPoint();
+        MoveToTargetPoint(playerBlockSpawn, catchUpSpeed, myTransition, isCatchUp: true);
     }
 
     private void StartTimer()
     {
         int myTransition = ++transitionId;
-
         KillAll();
         isMoving = false;
 
@@ -96,25 +96,19 @@ public class SpikeController : MonoBehaviour
         delayTween = DOVirtual.DelayedCall(intervalTime, () =>
         {
             if (!isActive) return;
-            if (myTransition != transitionId) return; // a newer transition took over, abort
+            if (myTransition != transitionId) return;
 
             spawner.levelController.SpikeTimer(0f);
-            MoveToNextSpikePoint(myTransition);
+
+            // Timer expired — spike advances to NEXT block on its own
+            Transform nextSpawn = spawner.GetNextSpikeSpawnPoint();
+            MoveToTargetPoint(nextSpawn, moveSpeed, myTransition, isCatchUp: false);
         });
     }
 
-    private void MoveToNextSpikePoint(int myTransition)
+    private void MoveToTargetPoint(Transform target, float speed, int myTransition, bool isCatchUp)
     {
-        if (spawner == null) return;
-        if (myTransition != transitionId) return; // stale call, abort
-
-        Transform nextSpawn = spawner.GetNextSpikeSpawnPoint();
-        MoveToTargetPoint(nextSpawn, moveSpeed, myTransition);
-    }
-
-    private void MoveToTargetPoint(Transform target, float speed, int myTransition)
-    {
-        if (myTransition != transitionId) return; // stale call, abort
+        if (myTransition != transitionId) return;
 
         if (target == null)
         {
@@ -129,9 +123,10 @@ public class SpikeController : MonoBehaviour
             .OnComplete(() =>
             {
                 if (!isActive) return;
-                if (myTransition != transitionId) return; // a newer transition took over, abort
+                if (myTransition != transitionId) return;
 
                 isMoving = false;
+                // After any move — always start fresh timer
                 StartTimer();
             });
     }

@@ -140,15 +140,24 @@ public class BlockSpawner : MonoBehaviour
         return current?.spikeSpawnPointTransform;
     }
     public Transform GetNextSpikeSpawnPoint()
+{
+    spikeBlockIndex++;
+    if (spikeBlockIndex >= blocks.Count)
     {
-        spikeBlockIndex++;  // spike advances its own index
-        if (spikeBlockIndex >= blocks.Count)
-        {
-            spikeBlockIndex = blocks.Count - 1;
-            return null;
-        }
-        BlockController nextBlock = blocks[spikeBlockIndex].GetComponent<BlockController>();
-        return nextBlock?.spikeSpawnPointTransform;
+        spikeBlockIndex = blocks.Count - 1;
+        return null;
+    }
+    BlockController block = blocks[spikeBlockIndex].GetComponent<BlockController>();
+    return block?.spikeSpawnPointTransform;
+}
+
+// Called when player moves — spike catches up to player's current block
+    public Transform GetCurrentPlayerSpikeSpawnPoint()
+    {
+        if (currentBlockIndex >= blocks.Count) return null;
+        spikeBlockIndex = currentBlockIndex; // sync spike index to player
+        BlockController block = blocks[spikeBlockIndex].GetComponent<BlockController>();
+        return block?.spikeSpawnPointTransform;
     }
 
 

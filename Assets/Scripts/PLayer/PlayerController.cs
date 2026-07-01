@@ -30,8 +30,11 @@ public class PlayerController : MonoBehaviour
         levelController = controller;
     }
 
-    public void OnGameStart()
-    {
+    public void OnGameStart(Transform spawnPoint)
+    {   
+        Debug.Log("PlayerController: OnGameStart called");
+        playerView.SetActive(false);
+        transform.position = spawnPoint.position;
         isGrounded = false;
         rb.simulated = true;
         isActive = true;
@@ -59,6 +62,8 @@ public class PlayerController : MonoBehaviour
         // var main = bounceEffect.main;
         // main.startColor = Color.red;
         // bounceEffect.Play();
+        //on game over, we can play death animation and then hide the player view after a delay
+        DOVirtual.DelayedCall(.6f, () => playerView.SetActive(false));
     }
 
     public void OnMainMenu()

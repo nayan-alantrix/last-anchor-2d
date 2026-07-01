@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: df76496a052384f9d9c2910393d42d87
+guid: 0a5f938cb437f4cd2a6c8325c183745a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2450668007156299715
-    second: ChatGPT Image Jun 12, 2026, 06_18_37 PM 6_0
+      213: 2585879421920119005
+    second: ChatGPT Image Jun 12, 2026, 06_18_37 PM 3_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,17 +109,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ChatGPT Image Jun 12, 2026, 06_18_37 PM 6_0
+      name: ChatGPT Image Jun 12, 2026, 06_18_37 PM 3_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 2
-        width: 498
-        height: 148
+        x: 0
+        y: 1
+        width: 500
+        height: 149
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d38c8038e6a7dfdd0800000000000000
-      internalID: -2450668007156299715
+      spriteID: dd88a8732a3e2e320800000000000000
+      internalID: 2585879421920119005
       vertices: []
       indices: 
       edges: []
@@ -148,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ChatGPT Image Jun 12, 2026, 06_18_37 PM 6_0: -2450668007156299715
+      ChatGPT Image Jun 12, 2026, 06_18_37 PM 3_0: 2585879421920119005
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

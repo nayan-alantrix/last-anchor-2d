@@ -18,9 +18,7 @@ public class LevelController : MonoBehaviour
     public void OnGameStart()
     {
         BlockData blockData = _blockSpawner.OnGameStart();
-
-        _playerController.transform.position = blockData.playerSpawnPoint.position;
-        _playerController.OnGameStart();
+        _playerController.OnGameStart(blockData.playerSpawnPoint);
         _spikeController.OnGameStart(blockData.spikeSpawnPoint);
     }
     public void OnGamePause()
